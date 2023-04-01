@@ -9,6 +9,7 @@ import {HelmetProvider} from 'react-helmet-async';
 import {Nav,Badge,Navbar,Container} from 'react-bootstrap';
 import CartPage from './pages/CartPage';
 import {Store} from './Store'
+import SigninPage from './pages/SigninPage'
 function App() {
   // console.log(data.products)
   const {state}=useContext(Store);
@@ -42,7 +43,7 @@ function App() {
           <Route path='/product/:slug' element={<ProductPage/>}/>
           <Route path="/"element={<HomePage/>}/>
           <Route path="/cart" element={<CartPage/>}/>
-          
+          <Route path='/signin' element={<SigninPage/>}/>
         </Routes>
         </Container>
        

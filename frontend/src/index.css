@@ -94,3 +94,18 @@ main
 {
   height:80px; 
 }
+
+/* Signin Page */
+.small-container.container
+{
+    max-width:600px;
+
+}
+.btn.btn-primary
+{
+    background-color: rgba(2, 59, 215, 0.836);
+    color:rgb(255, 255, 255);
+    margin:1rem 0rem 0rem 0rem;
+    padding:0.5rem 1rem;
+    
+}
