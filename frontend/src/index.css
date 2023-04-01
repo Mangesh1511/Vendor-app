@@ -11,3 +11,86 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.site-container
+{
+  min-height:100vh;
+}
+
+main
+{
+  /* padding:1rem; */
+  flex:1;
+}
+.products
+{
+  display:flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.product
+{
+ border:1px solid #404040; 
+ margin:1rem;
+}
+.product img
+{
+  width:100%;
+  max-width:300px;
+  object-fit: fill;
+}
+.rating span{
+
+  color:rgb(16, 191, 30);
+}
+.product button
+{
+  background-color: rgb(16, 191, 30);
+}
+.product-info
+{
+  padding:1rem;
+}
+.img-large
+{
+  max-width:100%;
+}
+
+/* Alert box css */
+.fade.alert.alert-danger.show{
+
+  margin:20rem 0rem 0rem 20rem;
+
+}
+/* Loading Page CSS */
+.col-md-6
+{
+  display:flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items: center;
+  padding:10rem 0rem 0rem 0rem ;
+}
+.Card
+{
+  display: flex;
+  flex-direction: column;
+  max-width:400px;
+  box-shadow: 4px 8px white;
+  padding:2rem;
+  border-radius: 1rem;
+  background: linear-gradient(-30deg, #23a6d5, #23d5ab);
+  color:white;
+
+}
+.spinner-border
+{
+  margin:2rem 0rem;
+}
+
+/* Add to Cart Page */
+.img-thumbnail
+{
+  height:80px; 
+}
