@@ -1,5 +1,5 @@
 const router=require('express').Router();
-const Data=require('../models/producModel');
+const Data=require('../models/productModel');
 // const {authorize}=require('../middlewares/auth');
 const {login,register,addtoCart}=require('../controllers/userControllers')
 // const bcrypt=require('bcrypt')

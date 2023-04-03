@@ -36,11 +36,11 @@ function ProductPage() {
             dispatch({ type: 'FETCH_REQUEST' })
             try {
                 const result = await axios.get(`/api/products/slug/${slug}`)
-                console.log('Result is', result)
+                console.log('Result is', result.data)
                 dispatch({ type: 'FETCH_SUCCESS', payload: result.data })
                 // else
                 // throw new Error('Data NotFound');
-                // console.log(result);
+                console.log('Result is: ',result.data);
             }
             catch (err) {
                 console.log('Result is', err.response.data.message)

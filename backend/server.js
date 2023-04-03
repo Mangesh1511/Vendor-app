@@ -5,16 +5,18 @@ const axios=require('axios')
 const mongoose=require('mongoose')
 const helmet =require('helmet')
 const morgan =require('morgan')
-const bodyParser=require('body-parser')
+
 const app=express()
 const CookieParser=require('cookie-parser')
 app.use(CookieParser());
+const bodyParser=require('body-parser')
 app.use(bodyParser.urlencoded({extended:true}));
 const {data}=require('./data');
 
 const authRoute=require('./routes/auth')
-const userRoute=require('./routes/user')
-const dataRoute=require('./routes/data');
+const userRoutes=require('./routes/userRoutes')
+const productRoutes=require('./routes/productRouter');
+const seedRoutes=require('./routes/seedRouter');
 require('dotenv').config()
 
 app.use(helmet());
@@ -23,6 +25,13 @@ app.use(express.json());
 
 // app.use('/api/users', userRoute);
 app.use('/routes/auth',authRoute);
+app.use('/api/products/seed',seedRoutes);
+app.use('/api/products/',productRoutes);
+app.use('/api/user',userRoutes);
+
+app.use((err,req,res,next)=>{
+    res.status(500).send({message:err.message});
+})
 // app.use('/api/posts',postRoute);
 app.get('/',(req,res)=>{
     console.log('server');
@@ -30,42 +39,10 @@ app.get('/',(req,res)=>{
 console.log("server started");
 
 
-app.get('/api/products',async(req,res)=>{
-    res.send(data.products);
-})
 
-app.get('/api/products/slug/:slug',async(req,res)=>{
-    console.log(data.products);
 
-   
 
-        const product=data.products.find((x)=>x.slug===req.params.slug);
-        console.log('Product\n',product)
-        if(product!=null && product !=undefined)
-        {
-            console.log('hi there');
-            res.status(200).send(product);
-        }
-        else 
-        res.status(404).send({message:'No Product Found'});
-    
-})
-app.get('/api/products/:id',async(req,res)=>{
-    console.log(data.products);
 
-   
-
-        const product=data.products.find((x)=>x._id===req.params.id);
-        console.log('Product\n',product)
-        if(product!=null && product !=undefined)
-        {
-            console.log('hi there');
-            res.status(200).send(product);
-        }
-        else 
-        res.status(404).send({message:'No Product Found'});
-    
-})
 
 app.listen(5000,()=>{
 

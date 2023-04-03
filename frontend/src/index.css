@@ -92,7 +92,7 @@ main
 /* Add to Cart Page */
 .img-thumbnail
 {
-  height:80px; 
+  max-height:120px; 
 }
 
 /* Signin Page */
@@ -101,7 +101,7 @@ main
     max-width:600px;
 
 }
-.btn.btn-primary
+.mb-3>.btn.btn-primary
 {
     background-color: rgba(2, 59, 215, 0.836);
     color:rgb(255, 255, 255);

@@ -12,8 +12,20 @@ const ProductSchema=new mongoose.Schema({
         unique:true,
         required:true
     },
-    quantity:{
+    pquantity:{
         type:Number,
+        default:0,
+        required:true
+    },
+    vendor:
+    {
+        type:String,
+        required:true
+
+    },
+    rating:{
+        type:Number,
+        default:0,
         required:true
     },
     price:{
@@ -28,7 +40,7 @@ const ProductSchema=new mongoose.Schema({
         type:String,
         default:""
     },
-    picture:{
+    image:{
         type:String,
         default:""
     },

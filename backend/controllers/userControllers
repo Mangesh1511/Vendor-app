@@ -1,5 +1,5 @@
 const bcryptjs=require('bcryptjs')
-const User=require('../models/users')
+const User=require('../models/userModel')
 const jwt=require('jsonwebtoken')
 const cookieParser=require('cookie-parser')
 const dotenv=require('dotenv');

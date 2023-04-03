@@ -29,11 +29,12 @@ function CartPage() {
     }
     else
     {
+
         window.alert('Sorry Product is out of Stock');
     }
   }
   const DeleteItemHandler=async(item)=>{
-        const {data}=await axios.get(`/api/products/${item._id}`);
+        // const {data}=await axios.get(`/api/products/${item._id}`);
 
         ctxDispatch({
             type:'CART_REMOVE_ITEM',
