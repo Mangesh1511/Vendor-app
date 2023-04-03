@@ -1,6 +1,6 @@
 
 import './App.css';
-import { useContext } from 'react';
+import { useContext,useEffect } from 'react';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
@@ -20,9 +20,14 @@ function App() {
       type: 'USER_SIGN_OUT',
     });
     localStorage.removeItem('userInfo');
+    // window.location.reload(true);
   }
-  console.log('Currently user info is: ',userInfo);
-
+  // console.log('Currently user info is: ',userInfo);
+  // useEffect(()=>{
+  //   // const arr=Object.keys(userInfo.userInfo);
+  //   // console.log('Currently user info is ',arr);
+  // }))
+  // console.log('User info is: ',userInfo);
   return (
     <BrowserRouter>
       <div className='d-flex flex-column site-container'>
@@ -41,7 +46,7 @@ function App() {
                     </Badge>
                   )}
                 </Link>
-                {userInfo ? (
+                {userInfo?(
                   <NavDropdown title={userInfo.username} id="basic-nav-dropdown">
                     <LinkContainer to="/profile">
                       <NavDropdown.Item>User Profile</NavDropdown.Item>
@@ -57,8 +62,8 @@ function App() {
                     >
                       Sign Out
                     </Link>
-                  </NavDropdown>
-                ) : (
+                  </NavDropdown>)
+                   :(
                   <Link className="nav-link" to="/signin">
                     Sign In
                   </Link>

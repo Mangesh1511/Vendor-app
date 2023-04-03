@@ -41,7 +41,7 @@ export default function SigninPage() {
     useEffect(()=>{
       if(userInfo)
       {
-        navigate(redirect);
+        navigate(redirect||'/');
       }
     },[navigate,redirect,userInfo]); 
   }
