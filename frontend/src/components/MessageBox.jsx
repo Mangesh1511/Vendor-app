@@ -8,7 +8,7 @@ function MessageBox(props) {
     return (
       <Alert variant={props.variant} style={{ width: "42rem" }}>
       <Alert.Heading>
-        Your Request Failed due to below reasons
+        {props.message}
       </Alert.Heading>
       {props.children}
     </Alert>
@@ -19,7 +19,7 @@ function MessageBox(props) {
     return(
       <Alert variant={props.variant} style={{width:"42rem"}}>
         <Alert.Heading>
-        Your Cart is Empty for Now.
+        
         </Alert.Heading>
         {props.children}
       </Alert>

@@ -2,14 +2,22 @@
 import './App.css';
 import { useContext,useEffect } from 'react';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import { LinkContainer } from 'react-router-bootstrap';
 import { HelmetProvider } from 'react-helmet-async';
-import { Nav, Badge, Navbar, Container, NavDropdown } from 'react-bootstrap';
+import { Nav, Badge, Navbar, Container, NavDropdown,Carousel } from 'react-bootstrap';
 import CartPage from './pages/CartPage';
 import { Store } from './Store'
 import SigninPage from './pages/SigninPage'
+import ShippingAddress from './pages/ShippingAddress';
+import SignupPage from './pages/SignupPage';
+import PaymentPage from './pages/PaymentPage';
+import PlaceOrder from './pages/PlaceOrder';
+import OrderSummaryPage from './pages/OrderSummaryPage';
+import OrderHistory from './pages/OrderHistory';
 function App() {
   // const navigate=useNavigate();
   // console.log(data.products)
@@ -19,18 +27,23 @@ function App() {
     ctxDispatch({
       type: 'USER_SIGN_OUT',
     });
+    console.log('User info is',userInfo);
+    
     localStorage.removeItem('userInfo');
-    // window.location.reload(true);
+    localStorage.removeItem('SHIPPING_ADDRESS');
+    localStorage.removeItem('paymentMethod');
+    localStorage.removeItem('OrderHistory');
   }
-  // console.log('Currently user info is: ',userInfo);
-  // useEffect(()=>{
-  //   // const arr=Object.keys(userInfo.userInfo);
-  //   // console.log('Currently user info is ',arr);
-  // }))
-  // console.log('User info is: ',userInfo);
+  console.log('Infor of the user is as follows:',userInfo);
+  if(userInfo==null||userInfo==undefined)
+  {
+    console.log('Yes now user is logged out\n');
+  }
+ 
   return (
     <BrowserRouter>
       <div className='d-flex flex-column site-container'>
+        <ToastContainer position="bottom-center" limit={1}/>
         <header>
           <Navbar bg='dark' variant='dark'>
             <Container>
@@ -46,7 +59,7 @@ function App() {
                     </Badge>
                   )}
                 </Link>
-                {userInfo?(
+                {(userInfo)?(
                   <NavDropdown title={userInfo.username} id="basic-nav-dropdown">
                     <LinkContainer to="/profile">
                       <NavDropdown.Item>User Profile</NavDropdown.Item>
@@ -79,6 +92,12 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/cart" element={<CartPage />} />
               <Route path='/signin' element={<SigninPage />} />
+              <Route path='/signup' element={<SignupPage/>}/>
+              <Route path="/shipping" element={<ShippingAddress/>}/>
+              <Route path='/payment' element={<PaymentPage/>}/>
+              <Route path='/placeOrder' element={<PlaceOrder/>}/>
+              <Route path='/order/:id' element={<OrderSummaryPage/>}/>
+              <Route path="/orderhistory" element={<OrderHistory/>}/>
             </Routes>
           </Container>
 

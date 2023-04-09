@@ -6,9 +6,10 @@ const initialState={
     
         userInfo:localStorage.getItem('userInfo')?JSON.parse(localStorage.getItem('userInfo')):null,
     cart:{
-
+        // itemsPrice:0,shippingPrice:0,taxPrice:0, 
+        paymentMethod:localStorage.getItem('paymentMethod')?(localStorage.getItem('paymentMethod')):'',
+        shippingAddress:localStorage.getItem('SHIPPING_ADDRESS')?JSON.parse(localStorage.getItem('SHIPPING_ADDRESS')):{},
         cartItems:localStorage.getItem('cartItems')?JSON.parse(localStorage.getItem('cartItems')):[],
-            // cartItems:localStorage.getItem('cartItems')?[]:JSON.parse(localStorage.getItem('cartItems'))
     },
 };
 
@@ -32,13 +33,44 @@ const reducer=(state,action)=>{
             localStorage.setItem('cartItems',JSON.stringify(cartItems));
                 return {...state,cart:{...state.cart,cartItems}};
         };
+        case 'CART_CLEAR':{
+
+            return {...state,cart:{...state.cart,cartItems:[]}};  
+        }
         case 'USER_SIGNIN':{
             // const data=action.payload;
             return {...state,userInfo:action.payload}
         };
         case 'USER_SIGN_OUT':{
-            return {...state,userInfo:null};
+            // console.log(userInfo)
+            return {...state,userInfo:null,
+            cart:{
+                cartItems:[],
+                shippingAddress:{},
+                paymentMethod:'', 
+            }};
         };
+        case 'SAVE_SHIPPING_ADDRESS':{
+            console.log('Saving shipping address')
+            console.log(action.payload);
+            return {
+                ...state,
+                cart: {
+                  ...state.cart,
+                  shippingAddress: action.payload,
+                },
+              };
+
+        }
+        case 'SAVE_PAYMENT_METHOD':{
+            return{
+                 ...state,
+                 cart:{
+                    ...state.cart,
+                    paymentMethod:action.payload
+                },
+            };
+        }
         default:
             return state;
 

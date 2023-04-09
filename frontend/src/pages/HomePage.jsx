@@ -3,8 +3,7 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import { useEffect, useState, useReducer } from 'react';
 import logger from 'use-reducer-logger'
 import axios from 'axios';
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import {Row,Col,Carousel} from 'react-bootstrap'
 import Product from '../components/Product'
 import { Helmet } from 'react-helmet-async';
 import Loading from '../components/Loading'
@@ -45,8 +44,35 @@ export default function HomePage() {
         fetchData();
     }, []);
     return (
+        <div className='Homepage'>
+         <Carousel>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="./images/carousel1.png"
+          alt="First slide"
+        />
+        
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="./images/carousel2.png"
+          alt="Second slide"
+        />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+            src="./images/carousel3.png"
+          alt="Third slide"
+        />
+      </Carousel.Item>
+    </Carousel>
     <div>
+
         <Helmet><title>SastaBazaar</title></Helmet>
+       
         <h1>Daily Products</h1>
 
         <div className='products'>
@@ -67,4 +93,5 @@ export default function HomePage() {
                 )
             }
         </div>
+</div>
 </div>);}

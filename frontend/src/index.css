@@ -7,6 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -16,11 +17,24 @@ code {
 {
   min-height:100vh;
 }
+.containerone{
+  padding:0;
+  margin:0;
+  margin-left: 0px;
+  margin-right:0px;
+  padding-left: 0px;
+  padding-right:0px;
+}
+.Homepage
+{
+  margin:2rem;
 
+}
 main
 {
   /* padding:1rem; */
   flex:1;
+  
 }
 .products
 {
@@ -108,4 +122,46 @@ main
     margin:1rem 0rem 0rem 0rem;
     padding:0.5rem 1rem;
     
+}
+
+
+/* ------- Check out Steps --------- */
+
+.checkout-steps>div
+{
+  border-bottom:0.2rem solid rgb(233, 195, 43);
+  color:rgb(138, 111, 4);
+
+}
+.checkout-steps>div.active
+{
+  border-bottom:0.2rem solid rgb(0, 198, 17);
+  color:black;
+}
+
+/* Place Order Screen */
+.btn.btn-primary>a
+{
+  text-decoration: none;
+  text-align: center;
+  color:white;
+}
+
+/* Carousel Adjustment */
+
+.carousel-inner
+{
+  width:100%;
+  margin-left:0px;
+  margin-right:0px;
+  padding-left:0px;
+  padding-right:0px;
+
+}
+
+/* Order Summary Page */
+align-items-center.row
+{
+  align-items: center;
+  justify-content: center;
 }

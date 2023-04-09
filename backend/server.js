@@ -17,6 +17,7 @@ const authRoute=require('./routes/auth')
 const userRoutes=require('./routes/userRoutes')
 const productRoutes=require('./routes/productRouter');
 const seedRoutes=require('./routes/seedRouter');
+const orderRoutes=require('./routes/orderRoutes');
 require('dotenv').config()
 
 app.use(helmet());
@@ -28,9 +29,14 @@ app.use('/routes/auth',authRoute);
 app.use('/api/products/seed',seedRoutes);
 app.use('/api/products/',productRoutes);
 app.use('/api/user',userRoutes);
+app.use('/api/orders',orderRoutes);
 
 app.use((err,req,res,next)=>{
     res.status(500).send({message:err.message});
+})
+
+app.get('/api/keys/paypal',(req,res)=>{
+    res.send(process.env.PAYPAL_CLIENT_ID||'sb');
 })
 // app.use('/api/posts',postRoute);
 app.get('/',(req,res)=>{

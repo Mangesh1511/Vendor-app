@@ -4,6 +4,7 @@ import {ListGroup,Button,Row,Col,Card} from 'react-bootstrap';
 import MessageBox from '../components/MessageBox'
 import {Link, useNavigate} from 'react-router-dom'
 import {Helmet} from 'react-helmet-async'
+
 import axios from 'axios'
 
 
@@ -67,6 +68,7 @@ function CartPage() {
                                     alt={item.name}
                                     className='rounded img-thumbnail'
                                 ></img>{' '}
+                                <br/>
                                 <Link to={`/product/${item.slug}`}>{item.name}</Link>
                             </Col>
                             <Col md={3}>

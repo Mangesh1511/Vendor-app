@@ -4,6 +4,8 @@ import {Container,Button,Form} from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
 import { useContext, useEffect, useState } from 'react';
 import {Store} from '../Store'
+import {toast} from 'react-toastify'
+import {getError} from '../utils'
 import '../index.css'
 
 export default function SigninPage() {
@@ -16,6 +18,15 @@ export default function SigninPage() {
   const {state,dispatch:ctxDispatch}=useContext(Store);
   const {userInfo}=state;
   const isAdmin=false;
+  useEffect(()=>{
+    console.log('IN the use effect of the signin page')
+    console.log('USer infor is: ',userInfo)
+    console.log('redirect url is:',redirect )
+    if(userInfo)
+    {
+      navigate(redirect||'/');
+    }
+  },[navigate,redirect,userInfo]); 
   const SubmitHandler=async(e)=>{
     e.preventDefault();
     try{
@@ -34,16 +45,12 @@ export default function SigninPage() {
     }
     catch(err)
     {
-      alert('Invalid Email or Password Entered. Please Try again!!')
-        console.log(err.message);
+      console.log(err);
+      toast.error(getError(err));
+        // console.log(err.message);
 
     }
-    useEffect(()=>{
-      if(userInfo)
-      {
-        navigate(redirect||'/');
-      }
-    },[navigate,redirect,userInfo]); 
+   
   }
 
   
@@ -76,7 +83,7 @@ export default function SigninPage() {
         </div>
         <div className="mb-3">
           New customer?{' '}
-          <Link to={`/signup?redirect=${redirect}`}>Create your account</Link>
+          <Link to={`/signup?redirect=/`}>Create your account</Link>
         </div>
         <div className="mb-3">
           Forget Password? <Link to={`/forget-password`}>Reset Password</Link>
